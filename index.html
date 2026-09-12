@@ -410,8 +410,31 @@ footer{border-top:1px solid var(--hair)}
 .ch-rule{background:var(--panel2);padding:18px;border:1px solid var(--hair)}
 .ch-rule .num{font-family:var(--mono);font-size:10px;color:var(--c3);letter-spacing:.1em;margin-bottom:6px}
 .ch-rule h4{font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:6px}
-.ch-rule p{font-size:12.5px;color:var(--muted);line-height:1.5}
 .ch-badge-nav{display:inline-block;margin-left:6px;padding:1px 5px;background:var(--c3);color:#060606;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.05em}
+
+/* ---------- 100 challenge pipeline & protocol ---------- */
+.flow-pipeline{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  border:1px dashed var(--dash);background:var(--panel);padding:18px 24px;margin-bottom:20px;
+  font-family:var(--mono);overflow-x:auto;
+}
+.flow-step{
+  display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--hair);
+  background:var(--bg);color:var(--muted);border-radius:2px;cursor:pointer;
+  transition:all .22s cubic-bezier(.2,.8,.3,1);white-space:nowrap;font-size:12px;
+}
+.flow-step:hover{border-color:var(--ink);color:var(--ink);box-shadow:var(--glow);transform:translateY(-1px)}
+.flow-step.on{border-color:var(--ink);background:var(--panel2);color:var(--ink);box-shadow:var(--glow)}
+.flow-step .flow-num{font-size:9.5px;color:var(--c3);opacity:.8}
+.flow-step.ch-repeat{border-color:color-mix(in srgb,var(--c3) 60%,transparent);color:var(--c3)}
+.flow-step.ch-repeat.on{background:color-mix(in srgb,var(--c3) 15%,var(--bg));box-shadow:0 0 14px rgba(62,230,168,.3)}
+.flow-arr{color:var(--faint);font-size:12px;user-select:none}
+
+.ch-stack{margin-bottom:34px}
+.ch-stack .r{cursor:pointer}
+.ch-stack .r.on{background:var(--panel2);padding-left:36px;border-left:2px solid var(--c3)}
+.ch-stack .r.highlight-100 .k::before{color:var(--c3);animation:pulse 1.8s infinite}
+.ch-stack .r.highlight-100 .k{color:var(--c3);font-weight:700}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
@@ -480,8 +503,10 @@ footer{border-top:1px solid var(--hair)}
   .ch-dossier{position:static;padding:20px}
   .ch-matrix-wrap{padding:14px}
   .ch-matrix{grid-template-columns:repeat(10,1fr);gap:3px}
-  .ch-cell{font-size:7.5px}
   .ch-manifesto-grid{grid-template-columns:1fr}
+  .flow-pipeline{flex-wrap:wrap;justify-content:center;gap:6px;padding:12px}
+  .flow-arr{display:none}
+  .flow-step{font-size:10px;padding:6px 10px}
 }
 
 </style>
@@ -647,6 +672,63 @@ footer{border-top:1px solid var(--hair)}
       <div class="ch-stat">
         <span class="ch-num">100%</span>
         <span class="ch-lbl">Public Velocity</span>
+      </div>
+    </div>
+
+    <!-- PROTOCOL FLOW PIPELINE & STACK (HOW WE DO) -->
+    <div style="margin: 40px 0 34px;">
+      <div class="eyebrow rv" style="margin-bottom:14px">HOW WE DO <em>//</em> THE 5-STAGE PROTOCOL</div>
+
+      <!-- VISUAL PIPELINE -->
+      <div class="flow-pipeline rv" id="flowPipeline" role="tablist" aria-label="5-stage challenge pipeline">
+        <div class="flow-step on" data-step="0" role="tab" aria-selected="true">
+          <span class="flow-num">01</span>
+          <span class="flow-txt">IDEA</span>
+        </div>
+        <div class="flow-arr">▸</div>
+        <div class="flow-step" data-step="1" role="tab" aria-selected="false">
+          <span class="flow-num">02</span>
+          <span class="flow-txt">BUILD</span>
+        </div>
+        <div class="flow-arr">▸</div>
+        <div class="flow-step" data-step="2" role="tab" aria-selected="false">
+          <span class="flow-num">03</span>
+          <span class="flow-txt">LAUNCH</span>
+        </div>
+        <div class="flow-arr">▸</div>
+        <div class="flow-step" data-step="3" role="tab" aria-selected="false">
+          <span class="flow-num">04</span>
+          <span class="flow-txt">LEARN</span>
+        </div>
+        <div class="flow-arr">▸</div>
+        <div class="flow-step ch-repeat" data-step="4" role="tab" aria-selected="false">
+          <span class="flow-num">05</span>
+          <span class="flow-txt">REPEAT × 100</span>
+        </div>
+      </div>
+
+      <!-- PROTOCOL STACK (SCREENSHOT THEME) -->
+      <div class="stack ch-stack rv" id="chProtocolStack">
+        <div class="r on" data-step="0">
+          <span class="k">FIND THE PROBLEM</span>
+          <span class="v">Identify a real problem worth solving · No fake needs</span>
+        </div>
+        <div class="r" data-step="1">
+          <span class="k">BUILD FAST</span>
+          <span class="v">Turn the idea into a working product in days, not weeks</span>
+        </div>
+        <div class="r" data-step="2">
+          <span class="k">LAUNCH IT</span>
+          <span class="v">Put it in front of real people and start selling</span>
+        </div>
+        <div class="r" data-step="3">
+          <span class="k">LEARN &amp; IMPROVE</span>
+          <span class="v">Use feedback, data, and failures to make it better</span>
+        </div>
+        <div class="r highlight-100" data-step="4">
+          <span class="k">REPEAT × 100</span>
+          <span class="v">Ship the next product, and keep going until Day 100</span>
+        </div>
       </div>
     </div>
 
@@ -1148,6 +1230,31 @@ document.querySelectorAll('#sel button').forEach(b=>b.addEventListener('click',(
       }
     });
   }
+
+  // Protocol pipeline & stack synchronization
+  const flowSteps = document.querySelectorAll('.flow-step');
+  const stackRows = document.querySelectorAll('#chProtocolStack .r');
+
+  function activateStep(idx){
+    flowSteps.forEach((s, i) => {
+      const active = (i === idx);
+      s.classList.toggle('on', active);
+      s.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    stackRows.forEach((r, i) => {
+      r.classList.toggle('on', i === idx);
+    });
+  }
+
+  flowSteps.forEach((step, idx) => {
+    step.addEventListener('click', () => activateStep(idx));
+    step.addEventListener('mouseenter', () => activateStep(idx));
+  });
+
+  stackRows.forEach((row, idx) => {
+    row.addEventListener('click', () => activateStep(idx));
+    row.addEventListener('mouseenter', () => activateStep(idx));
+  });
 })();
 
 /* ---------- reveal ---------- */
