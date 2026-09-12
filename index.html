@@ -403,7 +403,7 @@ footer{border-top:1px solid var(--hair)}
 .ch-spec-item{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px}
 .ch-spec-k{color:var(--muted)}
 .ch-spec-v{color:var(--ink);font-weight:500}
-.ch-dossier-act{display:flex;gap:10px}
+.ch-dossier-act{display:flex;gap:10px;flex-wrap:wrap}
 .ch-manifesto{display:none;border:1px dashed var(--dash);background:var(--panel);padding:28px;margin-top:24px}
 .ch-manifesto.open{display:block}
 .ch-manifesto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px}
@@ -622,6 +622,11 @@ footer{border-top:1px solid var(--hair)}
         <pre class="fxc" data-fx="swarm" style="color:var(--c1)" aria-hidden="true"></pre>
         <div class="row"><h3>jewel tara</h3><span class="badge live">Live</span></div>
         <p>WhatsApp-based luxury jewelry photoshoot studio. Transforms raw jewelry photos into high-end editorial model campaigns in &lt;30s.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+          <a class="btn btn-hot" style="padding:6px 12px;font-size:11px;" href="https://wa.me/917904070979?text=Hi%20Jewel%20Tara" target="_blank" rel="noopener">TRY APPLICATION</a>
+          <a class="btn" style="padding:6px 12px;font-size:11px;" href="https://github.com/vasusaays-code/jewelbot/blob/main/DOCUMENTATION.md" target="_blank" rel="noopener">DOCUMENTATION</a>
+          <a class="btn" style="padding:6px 12px;font-size:11px;" href="https://github.com/vasusaays-code/jewelbot" target="_blank" rel="noopener">SOURCE CODE</a>
+        </div>
       </div>
       <div class="card">
         <span class="id">UNIT_02</span>
@@ -784,8 +789,10 @@ footer{border-top:1px solid var(--hair)}
         </div>
 
         <div class="ch-dossier-act" id="dosAct">
-          <a class="btn btn-hot" href="https://github.com/vasusaays-code/jewelbot" target="_blank" rel="noopener">SOURCE CODE</a>
-          <a class="btn" href="#contact">TALK TO LAB</a>
+          <a class="btn btn-hot" href="https://wa.me/917904070979?text=Hi%20Jewel%20Tara" target="_blank" rel="noopener">TRY APPLICATION</a>
+          <a class="btn" href="https://github.com/vasusaays-code/jewelbot/blob/main/DOCUMENTATION.md" target="_blank" rel="noopener">DOCUMENTATION</a>
+          <a class="btn" href="https://github.com/vasusaays-code/jewelbot" target="_blank" rel="noopener">SOURCE CODE</a>
+          <a class="btn" href="#contact">SUGGEST AN IDEA</a>
         </div>
       </div>
     </div>
@@ -1015,8 +1022,12 @@ document.getElementById('tick').innerHTML=[...items,...items].map(s=>`<span>${s}
       cycle: "Lap 01 // Completed",
       verify: "Active Commercial Production",
       desc: "WhatsApp-based generative luxury jewelry photoshoot studio. Takes a single raw jewelry photo and generates luxury editorial model campaigns in <30 seconds with credit gating and auto-refunds.",
-      link: "https://github.com/vasusaays-code/jewelbot",
-      btnText: "SOURCE CODE"
+      actions: [
+        { label: "TRY APPLICATION", href: "https://wa.me/917904070979?text=Hi%20Jewel%20Tara", hot: true, external: true },
+        { label: "DOCUMENTATION", href: "https://github.com/vasusaays-code/jewelbot/blob/main/DOCUMENTATION.md", hot: false, external: true },
+        { label: "SOURCE CODE", href: "https://github.com/vasusaays-code/jewelbot", hot: false, external: true },
+        { label: "SUGGEST AN IDEA", href: "#contact", hot: false, external: false }
+      ]
     },
     2: {
       id: "UNIT_002",
@@ -1111,7 +1122,11 @@ document.getElementById('tick').innerHTML=[...items,...items].map(s=>`<span>${s}
       dosStack.textContent = p.stack;
       dosCycle.textContent = p.cycle;
       dosVerify.textContent = p.verify;
-      dosAct.innerHTML = `<a class="btn btn-hot" href="${p.link}" ${p.link.startsWith('http')?'target="_blank" rel="noopener"':''}>${p.btnText}</a><a class="btn" href="#contact">SUGGEST AN IDEA</a>`;
+      if(p.actions && p.actions.length){
+        dosAct.innerHTML = p.actions.map(act => `<a class="btn ${act.hot?'btn-hot':''}" href="${act.href}" ${act.external?'target="_blank" rel="noopener"':''}>${act.label}</a>`).join('');
+      } else {
+        dosAct.innerHTML = `<a class="btn btn-hot" href="${p.link}" ${p.link.startsWith('http')?'target="_blank" rel="noopener"':''}>${p.btnText}</a><a class="btn" href="#contact">SUGGEST AN IDEA</a>`;
+      }
     } else {
       const numStr = String(id).padStart(3,'0');
       dosTag.innerHTML = `○ SLOT_${numStr} // QUEUED FOR EXPEDITION`;
