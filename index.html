@@ -361,6 +361,58 @@ footer{border-top:1px solid var(--hair)}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.2,.8,.3,1),transform .75s cubic-bezier(.2,.8,.3,1)}
 .rv.in{opacity:1;transform:none}
 
+/* ---------- 100 products challenge ---------- */
+.ch-hud{display:grid;grid-template-columns:repeat(4,1fr);border:1px dashed var(--dash);background:var(--panel);margin-bottom:28px}
+.ch-stat{padding:22px 24px;border-right:1px dashed var(--dash);display:flex;flex-direction:column;gap:6px}
+.ch-stat:last-child{border-right:none}
+.ch-num{font-family:var(--px);font-size:clamp(30px,3.5vw,46px);line-height:1;color:var(--ink);text-shadow:0 0 14px rgba(var(--glowc),.2)}
+.ch-stat.live .ch-num{color:var(--c3)}
+.ch-stat.lab .ch-num{color:var(--c1)}
+.ch-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.ch-controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.ch-tabs{display:inline-flex;border:1px dashed var(--dash);background:var(--panel);padding:3px;gap:4px}
+.ch-tab{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:6px 14px;background:none;border:none;color:var(--muted);cursor:pointer;transition:all .2s}
+.ch-tab:hover{color:var(--ink)}
+.ch-tab.on{background:var(--panel2);color:var(--ink);box-shadow:var(--glow)}
+.ch-hint{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.ch-hint b{color:var(--c3);font-weight:400}
+
+.ch-layout{display:grid;grid-template-columns:1.35fr 1fr;gap:24px;align-items:start}
+.ch-matrix-wrap{border:1px dashed var(--dash);background:var(--panel);padding:20px;position:relative}
+.ch-matrix-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--hair)}
+.ch-matrix{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.ch-cell{
+  aspect-ratio:1;border:1px solid var(--hair);background:var(--bg);display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:9.5px;color:var(--faint);cursor:pointer;transition:all .2s;position:relative;user-select:none;
+}
+.ch-cell:hover{border-color:var(--ink);color:var(--ink);transform:scale(1.14);z-index:3;box-shadow:var(--glow)}
+.ch-cell.shipped{border-color:var(--c3);color:var(--c3);background:color-mix(in srgb,var(--c3) 14%,var(--bg));font-weight:700}
+.ch-cell.shipped::after{content:"";position:absolute;inset:2px;border:1px solid var(--c3);opacity:.4;animation:pulse 2s infinite}
+.ch-cell.in-lab{border-color:var(--c1);color:var(--c1);background:color-mix(in srgb,var(--c1) 9%,var(--bg))}
+.ch-cell.selected{border-color:var(--ink)!important;box-shadow:0 0 12px rgba(var(--glowc),.45)!important;background:var(--panel2)!important;color:var(--ink)!important;transform:scale(1.08)}
+
+@keyframes pulse{0%,100%{opacity:.2}50%{opacity:.8}}
+
+.ch-dossier{border:1px dashed var(--dash);background:var(--panel);padding:28px;position:sticky;top:104px}
+.ch-dossier-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+.ch-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--c3);text-transform:uppercase}
+.ch-dossier h3{font-family:var(--px2);font-size:27px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.ch-desc{font-size:14px;line-height:1.6;color:var(--body);margin-bottom:20px}
+.ch-spec-list{display:flex;flex-direction:column;gap:10px;border-top:1px dashed var(--dash);padding-top:16px;margin-bottom:22px}
+.ch-spec-item{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px}
+.ch-spec-k{color:var(--muted)}
+.ch-spec-v{color:var(--ink);font-weight:500}
+.ch-dossier-act{display:flex;gap:10px}
+.ch-manifesto{display:none;border:1px dashed var(--dash);background:var(--panel);padding:28px;margin-top:24px}
+.ch-manifesto.open{display:block}
+.ch-manifesto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px}
+.ch-rule{background:var(--panel2);padding:18px;border:1px solid var(--hair)}
+.ch-rule .num{font-family:var(--mono);font-size:10px;color:var(--c3);letter-spacing:.1em;margin-bottom:6px}
+.ch-rule h4{font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:6px}
+.ch-rule p{font-size:12.5px;color:var(--muted);line-height:1.5}
+.ch-badge-nav{display:inline-block;margin-left:6px;padding:1px 5px;background:var(--c3);color:#060606;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.05em}
+
 /* ---------- responsive ---------- */
 @media(max-width:900px){
   :root{--gut:22px}
@@ -420,6 +472,16 @@ footer{border-top:1px solid var(--hair)}
   .ticker-in{padding:16px 0}
   .band{padding:10px 0}
   pre.fxa{font-size:6px}
+  /* 100 products challenge mobile */
+  .ch-hud{grid-template-columns:1fr 1fr}
+  .ch-stat:nth-child(2){border-right:none}
+  .ch-stat:nth-child(-n+2){border-bottom:1px dashed var(--dash)}
+  .ch-layout{grid-template-columns:1fr}
+  .ch-dossier{position:static;padding:20px}
+  .ch-matrix-wrap{padding:14px}
+  .ch-matrix{grid-template-columns:repeat(10,1fr);gap:3px}
+  .ch-cell{font-size:7.5px}
+  .ch-manifesto-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -432,6 +494,7 @@ footer{border-top:1px solid var(--hair)}
   <div class="seg">
     <span>SYS://<b style="color:var(--ink)">STORYNA</b></span>
     <span class="ok hidem">● <span class="dot">ONLINE</span></span>
+    <span class="ok hidem" style="margin-left:14px;color:var(--c3)">[100_CHALLENGE // 001 SHIPPED]</span>
   </div>
   <div class="seg">
     <span id="coords" class="hidem">X:---- Y:----</span>
@@ -443,6 +506,7 @@ footer{border-top:1px solid var(--hair)}
 <nav>
   <div class="nav-in">
     <a href="#products">[Products]</a>
+    <a href="#challenge100">[100&nbsp;Challenge]<span class="ch-badge-nav">100</span></a>
     <a href="#loop">[The&nbsp;Loop]</a>
     <span class="logo-wrap" id="logowrap"><canvas id="logoc" width="110" height="120" aria-hidden="true"></canvas><img class="logo" src="data:image/png;base64,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" alt="storyna"></span>
     <a href="#signals">[Signals]</a>
@@ -459,6 +523,7 @@ footer{border-top:1px solid var(--hair)}
     <p class="lede rv">storyna is a lab where ideas run laps — researched, prototyped, shipped, and fed back through the loop until they hold up.</p>
     <div class="cta-row rv">
       <a class="btn" href="#loop">HOW THE LOOP WORKS</a>
+      <a class="btn" href="#challenge100">100 PRODUCTS CHALLENGE</a>
       <a class="btn btn-hot" href="#products">SEE THE PRODUCTS</a>
     </div>
     <div class="art-wrap rv">
@@ -533,8 +598,8 @@ footer{border-top:1px solid var(--hair)}
       <div class="card">
         <span class="id">UNIT_01</span>
         <pre class="fxc" data-fx="swarm" style="color:var(--c1)" aria-hidden="true"></pre>
-        <div class="row"><h3>placeholder_one</h3><span class="badge live">Live</span></div>
-        <p>One line on what this product does and who it's for. Swap in the real thing — this is placeholder copy.</p>
+        <div class="row"><h3>jewel tara</h3><span class="badge live">Live</span></div>
+        <p>WhatsApp-based luxury jewelry photoshoot studio. Transforms raw jewelry photos into high-end editorial model campaigns in &lt;30s.</p>
       </div>
       <div class="card">
         <span class="id">UNIT_02</span>
@@ -553,6 +618,127 @@ footer{border-top:1px solid var(--hair)}
         <pre class="fxc" data-fx="scan" style="color:var(--c4)" aria-hidden="true"></pre>
         <div class="row"><h3>placeholder_four</h3><span class="badge">Building</span></div>
         <p>One line on what this product does and who it's for. Swap in the real thing — this is placeholder copy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 100 PRODUCTS CHALLENGE -->
+  <section class="sec" id="challenge100">
+    <div class="head center rv">
+      <div class="eyebrow">CHALLENGE 100 <em>//</em> THE EXPERIMENT</div>
+      <h2>100 products. 100 loops. In public.</h2>
+      <p class="lede">An extreme shipping discipline: building, testing, and shipping 100 validated products into real hands. Zero vaporware. The loop gets faster every lap.</p>
+    </div>
+
+    <!-- HUD STATS -->
+    <div class="ch-hud rv">
+      <div class="ch-stat live">
+        <span class="ch-num" id="chStatShipped">001</span>
+        <span class="ch-lbl">Shipped &amp; Live</span>
+      </div>
+      <div class="ch-stat lab">
+        <span class="ch-num">003</span>
+        <span class="ch-lbl">In The Lab</span>
+      </div>
+      <div class="ch-stat">
+        <span class="ch-num">096</span>
+        <span class="ch-lbl">Slots Queued</span>
+      </div>
+      <div class="ch-stat">
+        <span class="ch-num">100%</span>
+        <span class="ch-lbl">Public Velocity</span>
+      </div>
+    </div>
+
+    <!-- CONTROLS & TABS -->
+    <div class="ch-controls rv">
+      <div class="ch-tabs" role="tablist" aria-label="100 products filters">
+        <button class="ch-tab on" data-filter="all" role="tab" aria-selected="true">[ALL 100 SLOTS]</button>
+        <button class="ch-tab" data-filter="shipped" role="tab" aria-selected="false">[SHIPPED (1)]</button>
+        <button class="ch-tab" data-filter="lab" role="tab" aria-selected="false">[IN LAB (3)]</button>
+        <button class="ch-tab" id="chManifestoBtn" role="tab" aria-selected="false">[THE MANIFESTO]</button>
+      </div>
+      <div class="ch-hint">Click any matrix cell to inspect product dossier <b>▸</b></div>
+    </div>
+
+    <!-- MATRIX + DOSSIER LAYOUT -->
+    <div class="ch-layout rv">
+      <!-- 100 MATRIX -->
+      <div class="ch-matrix-wrap">
+        <div class="ch-matrix-head">
+          <span>CENTURION MATRIX // 100 SLOTS</span>
+          <span id="chFilterLabel">FILTER: ALL [001-100]</span>
+        </div>
+        <div class="ch-matrix" id="chMatrix" aria-label="Interactive 100 products grid">
+          <!-- 100 cells generated dynamically by script -->
+        </div>
+      </div>
+
+      <!-- PRODUCT DOSSIER / SPEC CARD -->
+      <div class="ch-dossier" id="chDossier">
+        <div class="ch-dossier-head">
+          <div>
+            <div class="ch-tag" id="dosTag">● UNIT_001 // SHIPPED &amp; LIVE</div>
+            <h3 id="dosTitle">jewel tara</h3>
+          </div>
+          <span class="badge live" id="dosBadge">Live</span>
+        </div>
+        <p class="ch-desc" id="dosDesc">WhatsApp-based generative luxury jewelry photoshoot studio. Takes a single jewelry product photo and delivers high-fashion Vogue editorial shoots in under 30 seconds.</p>
+        
+        <div class="ch-spec-list">
+          <div class="ch-spec-item">
+            <span class="ch-spec-k">Category:</span>
+            <span class="ch-spec-v" id="dosCat">Computer Vision / WhatsApp AI</span>
+          </div>
+          <div class="ch-spec-item">
+            <span class="ch-spec-k">Stack:</span>
+            <span class="ch-spec-v" id="dosStack">Flask · Twilio · Fal.ai · SQLite · Render</span>
+          </div>
+          <div class="ch-spec-item">
+            <span class="ch-spec-k">Loop Cycle:</span>
+            <span class="ch-spec-v" id="dosCycle">Lap 01 // Completed</span>
+          </div>
+          <div class="ch-spec-item">
+            <span class="ch-spec-k">Verification:</span>
+            <span class="ch-spec-v" id="dosVerify">Active Commercial Testing</span>
+          </div>
+        </div>
+
+        <div class="ch-dossier-act" id="dosAct">
+          <a class="btn btn-hot" href="https://github.com/vasusaays-code/jewelbot" target="_blank" rel="noopener">SOURCE CODE</a>
+          <a class="btn" href="#contact">TALK TO LAB</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE MANIFESTO (EXPANDABLE) -->
+    <div class="ch-manifesto" id="chManifesto">
+      <div class="eyebrow" style="margin-bottom:10px">RULES OF ENGAGEMENT</div>
+      <h3 style="font-family:var(--px2);font-size:28px;margin-bottom:12px">Why 100 Products?</h3>
+      <p style="color:var(--body);font-size:14px;line-height:1.6;max-width:640px">
+        Building 100 products isn't about rushing out disposable toys. It's about developing relentless product muscle. Repetition burns away perfectionist hesitation and turns intuition into repeatable engineering.
+      </p>
+      <div class="ch-manifesto-grid">
+        <div class="ch-rule">
+          <div class="num">PRINCIPLE 01</div>
+          <h4>Small, Honest Slices</h4>
+          <p>No 6-month roadmaps. Put a working piece of software in front of users by week's end or kill the assumption.</p>
+        </div>
+        <div class="ch-rule">
+          <div class="num">PRINCIPLE 02</div>
+          <h4>Real Telemetry Only</h4>
+          <p>Only deploy to people who will be annoyed if it fails. That is the only real signal of utility.</p>
+        </div>
+        <div class="ch-rule">
+          <div class="num">PRINCIPLE 03</div>
+          <h4>Shared Infrastructure</h4>
+          <p>Every lesson in model routing, webhook resiliency, and evals feeds directly into the remaining 99 units.</p>
+        </div>
+        <div class="ch-rule">
+          <div class="num">PRINCIPLE 04</div>
+          <h4>The Loop Compounds</h4>
+          <p>Lap 10 is twice as fast as Lap 1. Lap 50 is ten times sharper. By Lap 100, shipping is second nature.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -799,6 +985,170 @@ document.querySelectorAll('#sel button').forEach(b=>b.addEventListener('click',(
   document.getElementById('prl').textContent=d.rl;
   document.getElementById('pq').textContent=d.q;
 }));
+
+/* ---------- 100 products challenge logic ---------- */
+(()=>{
+  const products = {
+    1: {
+      id: "UNIT_001",
+      title: "jewel tara",
+      status: "shipped",
+      statusLabel: "SHIPPED & LIVE",
+      badgeClass: "live",
+      cat: "Computer Vision / WhatsApp AI",
+      stack: "Flask · Twilio · Fal.ai · SQLite · Render",
+      cycle: "Lap 01 // Completed",
+      verify: "Active Commercial Production",
+      desc: "WhatsApp-based generative luxury jewelry photoshoot studio. Takes a single raw jewelry photo and generates luxury editorial model campaigns in <30 seconds with credit gating and auto-refunds.",
+      link: "https://github.com/vasusaays-code/jewelbot",
+      btnText: "SOURCE CODE"
+    },
+    2: {
+      id: "UNIT_002",
+      title: "eval_runner",
+      status: "in-lab",
+      statusLabel: "IN THE LAB // PROTOTYPING",
+      badgeClass: "beta",
+      cat: "LLM Orchestration / Eval Gates",
+      stack: "Python · TypeScript · Vector Store",
+      cycle: "Lap 02 // Prototype",
+      verify: "Running internal regression test suites",
+      desc: "Continuous regression evaluation harness for autonomous agents. Replays conversation traces against golden sets on every merge.",
+      link: "#contact",
+      btnText: "REQUEST ACCESS"
+    },
+    3: {
+      id: "UNIT_003",
+      title: "voice_synth",
+      status: "in-lab",
+      statusLabel: "IN THE LAB // PROTOTYPING",
+      badgeClass: "beta",
+      cat: "Realtime Audio / Edge Speech",
+      stack: "WebSockets · WebAssembly · Gemini Live",
+      cycle: "Lap 03 // Prototype",
+      verify: "Benchmarking <180ms latency floor",
+      desc: "Zero-lag bidirectional conversational voice agent built for low-bandwidth mobile environments with real-time barge-in support.",
+      link: "#contact",
+      btnText: "REQUEST ACCESS"
+    },
+    4: {
+      id: "UNIT_004",
+      title: "crawler_loop",
+      status: "in-lab",
+      statusLabel: "IN THE LAB // ARCHITECTING",
+      badgeClass: "",
+      cat: "Automated Scraping / Schema Ingestion",
+      stack: "Headless Chrome · Playwright · Structured Output",
+      cycle: "Lap 04 // Frame",
+      verify: "Validating extraction schemas",
+      desc: "Autonomous catalog crawler that translates unstructured product catalogs into typed, normalized relational schemas.",
+      link: "#contact",
+      btnText: "FOLLOW SPEC"
+    }
+  };
+
+  const matrix = document.getElementById('chMatrix');
+  if(!matrix) return;
+
+  const filterLabel = document.getElementById('chFilterLabel');
+  const dosTag = document.getElementById('dosTag');
+  const dosTitle = document.getElementById('dosTitle');
+  const dosBadge = document.getElementById('dosBadge');
+  const dosDesc = document.getElementById('dosDesc');
+  const dosCat = document.getElementById('dosCat');
+  const dosStack = document.getElementById('dosStack');
+  const dosCycle = document.getElementById('dosCycle');
+  const dosVerify = document.getElementById('dosVerify');
+  const dosAct = document.getElementById('dosAct');
+
+  let activeIndex = 1;
+  const cells = [];
+
+  for(let i=1; i<=100; i++){
+    const cell = document.createElement('div');
+    cell.className = 'ch-cell';
+    cell.textContent = String(i).padStart(3,'0');
+    cell.dataset.id = i;
+
+    if(i === 1) cell.classList.add('shipped');
+    else if(i <= 4) cell.classList.add('in-lab');
+
+    if(i === 1) cell.classList.add('selected');
+
+    cell.addEventListener('click', ()=> selectCell(i));
+    matrix.appendChild(cell);
+    cells.push(cell);
+  }
+
+  function selectCell(id){
+    cells.forEach(c => c.classList.remove('selected'));
+    cells[id - 1].classList.add('selected');
+    activeIndex = id;
+
+    const p = products[id];
+    if(p){
+      dosTag.innerHTML = `● ${p.id} // ${p.statusLabel}`;
+      dosTitle.textContent = p.title;
+      dosBadge.className = 'badge ' + (p.badgeClass || '');
+      dosBadge.textContent = p.status === 'shipped' ? 'Live' : (p.status === 'in-lab' ? 'Beta' : 'Building');
+      dosDesc.textContent = p.desc;
+      dosCat.textContent = p.cat;
+      dosStack.textContent = p.stack;
+      dosCycle.textContent = p.cycle;
+      dosVerify.textContent = p.verify;
+      dosAct.innerHTML = `<a class="btn btn-hot" href="${p.link}" ${p.link.startsWith('http')?'target="_blank" rel="noopener"':''}>${p.btnText}</a><a class="btn" href="#contact">SUGGEST AN IDEA</a>`;
+    } else {
+      const numStr = String(id).padStart(3,'0');
+      dosTag.innerHTML = `○ SLOT_${numStr} // QUEUED FOR EXPEDITION`;
+      dosTitle.textContent = `hypothesis_${numStr}`;
+      dosBadge.className = 'badge';
+      dosBadge.textContent = 'Queued';
+      dosDesc.textContent = `Slot #${numStr} is currently open in the 100 products queue. When the current lap ships and telemetry stabilizes, a new problem statement will be framed here.`;
+      dosCat.textContent = 'Awaiting Next Lap';
+      dosStack.textContent = 'storyna Core Substrate';
+      dosCycle.textContent = `Lap ${numStr} // Queued`;
+      dosVerify.textContent = 'Telemetry Gate Pending';
+      dosAct.innerHTML = `<a class="btn btn-hot" href="#contact">SUBMIT A PROBLEM</a><a class="btn" href="#loop">VIEW THE METHOD</a>`;
+    }
+  }
+
+  // Filter tabs
+  const tabs = document.querySelectorAll('.ch-tab:not(#chManifestoBtn)');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t => {t.classList.remove('on'); t.setAttribute('aria-selected', 'false');});
+      tab.classList.add('on');
+      tab.setAttribute('aria-selected', 'true');
+      const f = tab.dataset.filter;
+      if(filterLabel) filterLabel.textContent = `FILTER: ${f.toUpperCase()}`;
+
+      cells.forEach((cell, idx) => {
+        const id = idx + 1;
+        if(f === 'all'){
+          cell.style.display = 'flex';
+        } else if(f === 'shipped'){
+          cell.style.display = (id === 1) ? 'flex' : 'none';
+        } else if(f === 'lab'){
+          cell.style.display = (id >= 2 && id <= 4) ? 'flex' : 'none';
+        }
+      });
+    });
+  });
+
+  // Manifesto toggle
+  const manifestoBtn = document.getElementById('chManifestoBtn');
+  const manifesto = document.getElementById('chManifesto');
+  if(manifestoBtn && manifesto){
+    manifestoBtn.addEventListener('click', ()=>{
+      const isOpen = manifesto.classList.toggle('open');
+      manifestoBtn.classList.toggle('on', isOpen);
+      manifestoBtn.setAttribute('aria-selected', isOpen ? 'true' : 'false');
+      if(isOpen){
+        manifesto.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    });
+  }
+})();
 
 /* ---------- reveal ---------- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
